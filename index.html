@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrasah Berkah Ilmu - Pendidikan Islam untuk Semua Usia</title>
+    <meta name="description" content="Madrasah Berkah Ilmu menyediakan pendidikan Islam berkualitas dengan kurikulum modern untuk semua jenjang usia. Bergabunglah dengan kami untuk membangun generasi Qur'ani.">
+
+    <!-- Google Fonts: Poppins for Headings, Open Sans for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Custom CSS for fine-tuning and animations */
+        :root {
+            --primary-color: #28a745; /* Green */
+            --secondary-color: #17a2b8; /* Teal */
+            --dark-bg: #1a202c;
+            --dark-card-bg: #2d3748;
+            --dark-text: #edf2f7;
+            --light-bg: #f8f9fa;
+            --light-card-bg: #ffffff;
+            --light-text: #2d3748;
+        }
+
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Light Mode --- */
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+        .light-mode .bg-card { background-color: var(--light-card-bg); }
+        .light-mode .text-main { color: var(--light-text); }
+        .light-mode .text-primary { color: var(--primary-color); }
+        .light-mode header { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        
+        /* --- Dark Mode --- */
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+        .dark-mode .bg-card { background-color: var(--dark-card-bg); }
+        .dark-mode .text-main { color: var(--dark-text); }
+        .dark-mode .text-primary { color: var(--primary-color); }
+        .dark-mode header { background-color: rgba(26, 32, 44, 0.8); backdrop-filter: blur(10px); }
+        .dark-mode .testimonial-card { border-color: #4a5568; }
+
+        /* --- Header Styling --- */
+        header.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Utility Buttons --- */
+        #back-to-top, #dark-mode-toggle {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #back-to-top.hidden, #dark-mode-toggle.hidden {
+            opacity: 0;
+            transform: scale(0);
+        }
+    </style>
+</head>
+<body class="light-mode">
+
+    <!-- Header & Navigation -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-primary">
+                <i class="fas fa-book-quran mr-2"></i>Madrasah Berkah Ilmu
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-main hover:text-primary transition">Home</a>
+                <a href="#vision" class="text-main hover:text-primary transition">Visi</a>
+                <a href="#curriculums" class="text-main hover:text-primary transition">Kurikulum</a>
+                <a href="#schedule" class="text-main hover:text-primary transition">Jadwal</a>
+                <a href="#contact" class="text-main hover:text-primary transition">Kontak</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-main text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-card shadow-lg">
+            <a href="#home" class="block py-3 px-6 text-main hover:bg-gray-200 dark:hover:bg-gray-700">Home</a>
+            <a href="#vision" class="block py-3 px-6 text-main hover:bg-gray-200 dark:hover:bg-gray-700">Visi</a>
+            <a href="#curriculums" class="block py-3 px-6 text-main hover:bg-gray-200 dark:hover:bg-gray-700">Kurikulum</a>
+            <a href="#schedule" class="block py-3 px-6 text-main hover:bg-gray-200 dark:hover:bg-gray-700">Jadwal</a>
+            <a href="#contact" class="block py-3 px-6 text-main hover:bg-gray-200 dark:hover:bg-gray-700">Kontak</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1589002213012-6ec134d3f8ae');">
+            <div class="container mx-auto px-6 text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 reveal">Membentuk Generasi Qur'ani, Cerdas, dan Berakhlak Mulia</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto reveal" style="transition-delay: 200ms;">Madrasah Berkah Ilmu berkomitmen memberikan pendidikan Islam yang holistik, memadukan ilmu agama dan pengetahuan umum untuk masa depan yang cerah.</p>
+                <a href="#contact" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 reveal" style="transition-delay: 400ms;">
+                    Hubungi Pendaftaran
+                </a>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Mengapa Memilih Kami</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Benefit 1 -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center reveal">
+                        <div class="text-green-500 text-5xl mb-4"><i class="fas fa-book-quran"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-main">Talaqqi Al-Qur'an</h3>
+                        <p class="text-main text-sm">Bacaan sesuai panduan ulama tajwid, berfokus pada metode Riyadlatul-Lisan (melatih kefasihan lidah).</p>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center reveal" style="transition-delay: 150ms;">
+                        <div class="text-green-500 text-5xl mb-4"><i class="fas fa-scroll"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-main">Materi Otentik</h3>
+                        <p class="text-main text-sm">Pelajaran merujuk langsung pada kitab-kitab turats karya ulama Ahlus-Sunnah Wal-Jama'ah.</p>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center reveal" style="transition-delay: 300ms;">
+                        <div class="text-green-500 text-5xl mb-4"><i class="fas fa-hands-holding-child"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-main">Penekanan Adab</h3>
+                        <p class="text-main text-sm">Fokus pada pembinaan adab (etika) dalam pergaulan Islami sehari-hari.</p>
+                    </div>
+                    <!-- Benefit 4 -->
+                    <div class="bg-card p-6 rounded-xl shadow-lg text-center reveal" style="transition-delay: 450ms;">
+                        <div class="text-green-500 text-5xl mb-4"><i class="fas fa-user-graduate"></i></div>
+                        <h3 class="text-xl font-bold mb-2 text-main">Pengajar Kompeten</h3>
+                        <p class="text-main text-sm">Tim pengajar merupakan lulusan Ma'had dan Perguruan Tinggi Islam yang ahli di bidangnya.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculums Section -->
+        <section id="curriculums" class="py-20 bg-gray-100 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Program Kurikulum Kami</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Curriculum Card 1 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal">
+                        <img src="https://placehold.co/600x400/a7f3d0/166534?text=Al-Qur'an" alt="Al Qur'an" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Al Qur'an</h3>
+                            <p class="mt-2 text-main">Talaqqi Iqro’, Talaqqi Al Qur’an, Tajwid (Tuhfathul Athfal), Tahfizh Juz ‘Amma.</p>
+                        </div>
+                    </div>
+                    <!-- Curriculum Card 2 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/600x400/6ee7b7/14532d?text=Fiqih" alt="Fiqih Ibadah" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Fiqih Ibadah</h3>
+                            <p class="mt-2 text-main">Tatacara Ibadah (Safinatun-Najah), Tahfizh Dzikir dan Doa (Hishnul Muslim).</p>
+                        </div>
+                    </div>
+                    <!-- Curriculum Card 3 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/34d399/052e16?text=Kisah+Nabi" alt="Kisah Nabi dan Rasul" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Kisah Nabi dan Rasul</h3>
+                            <p class="mt-2 text-main">Mempelajari kisah-kisah para nabi dan rasul dari kitab Qashashul Anbiya’.</p>
+                        </div>
+                    </div>
+                    <!-- Curriculum Card 4 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 450ms;">
+                        <img src="https://placehold.co/600x400/10b981/064e3b?text=Bahasa+Arab" alt="Bahasa Arab" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Bahasa Arab</h3>
+                            <p class="mt-2 text-main">Pembelajaran Bahasa Arab aktif dan komunikatif menggunakan Metode Al Mumtaz.</p>
+                        </div>
+                    </div>
+                    <!-- Curriculum Card 5 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 600ms;">
+                        <img src="https://placehold.co/600x400/059669/04432c?text=Adab" alt="Adab Sehari-hari" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Adab Sehari-hari</h3>
+                            <p class="mt-2 text-main">Pembinaan adab dan akhlak mulia dari Kitab Adabul Muslim fil-Yaumi wal-Lailah.</p>
+                        </div>
+                    </div>
+                    <!-- Curriculum Card 6 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 750ms;">
+                        <img src="https://placehold.co/600x400/047857/062e23?text=Aqidah" alt="Aqidah" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Aqidah</h3>
+                            <p class="mt-2 text-main">Penguatan aqidah shahihah merujuk pada Kitab Khudz ‘Aqidataka.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Profil Madrasah Kami</h2>
+                <div class="aspect-w-16 aspect-h-9 rounded-lg shadow-xl overflow-hidden reveal max-w-4xl mx-auto">
+                    <!-- Replace with your actual YouTube video ID -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pengajar Section -->
+        <section id="teachers" class="py-20 bg-gray-100 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Pengajar Kami</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Teacher 1 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal">
+                        <img src="https://placehold.co/600x400/a7f3d0/166534?text=Ustadz+Fauzy" alt="Ustadz Fauzy Barokah Ramadhani" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Ustadz Fauzy Barokah Ramadhani</h3>
+                            <ul class="mt-2 text-main list-disc list-inside space-y-1 text-sm">
+                                <li>Alumnus Ma’had Al-Imarat predikat Mumtaz</li>
+                                <li>Mahasiswa Internasional Open University (IOU)</li>
+                                <li>Pembina Majelis Ta’lim Nuurul-Falaah Maleber</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Teacher 2 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 150ms;">
+                        <img src="https://placehold.co/600x400/6ee7b7/14532d?text=Ustadz+Hilmy" alt="Ustadz Hilmy Akbar Rahmawan" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Ustadz Hilmy Akbar Rahmawan</h3>
+                             <ul class="mt-2 text-main list-disc list-inside space-y-1 text-sm">
+                                <li>Alumnus Ma’had Al-Imarat predikat Jayyid Jiddan</li>
+                                <li>Mahasiswa Internasional Open University (IOU)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Teacher 3 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 300ms;">
+                        <img src="https://placehold.co/600x400/34d399/052e16?text=Ustadzah+Amanda" alt="Ustadzah Amanda Edrea Sapphira, S. Sos" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Ustadzah Amanda Edrea S., S.Sos</h3>
+                             <ul class="mt-2 text-main list-disc list-inside space-y-1 text-sm">
+                                <li>Alumnus IAI Persatuan Islam Bandung</li>
+                                <li>Jurusan Komunikasi Penyiaran Islam (KPI)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Teacher 4 -->
+                    <div class="bg-card rounded-lg shadow-md overflow-hidden reveal" style="transition-delay: 450ms;">
+                        <img src="https://placehold.co/600x400/10b981/064e3b?text=Ustadzah+Ismi" alt="Ustadzah Ismi Elga Pratiwi" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-main">Ustadzah Ismi Elga Pratiwi</h3>
+                             <ul class="mt-2 text-main list-disc list-inside space-y-1 text-sm">
+                                <li>Alumnus Ma’had Al-Imarat lil-Banat</li>
+                                <li>Mahasantri Ma’had Al-Jazary Bandung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Apa Kata Mereka?</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-card p-8 rounded-xl shadow-lg reveal testimonial-card">
+                        <p class="text-main italic mb-4">"Alhamdulillah, anak saya menjadi lebih rajin sholat dan hafalannya bertambah sejak sekolah di sini. Lingkungannya sangat mendukung."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/100x100/a7f3d0/333333?text=A" alt="Foto Orang Tua" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold text-main">Ahmad Fauzi</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Orang Tua Murid</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-card p-8 rounded-xl shadow-lg reveal testimonial-card" style="transition-delay: 200ms;">
+                        <p class="text-main italic mb-4">"Guru-gurunya sabar dan metode mengajarnya seru. Saya jadi semangat belajar mengaji dan ilmu agama lainnya."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/100x100/6ee7b7/333333?text=S" alt="Foto Siswa" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold text-main">Siti Aisyah</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Siswi Kelas 5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="py-20 bg-gray-100 dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12 reveal text-main">Jadwal Kelas</h2>
+                <div class="max-w-xl mx-auto bg-card rounded-xl shadow-lg overflow-hidden reveal">
+                    <div class="p-4 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-center font-semibold">
+                        Setiap Senin s.d. Kamis (4x sepekan)
+                    </div>
+                    <table class="w-full text-left text-main">
+                        <thead class="bg-green-600 text-white">
+                            <tr>
+                                <th class="p-4">Kelas</th>
+                                <th class="p-4">Waktu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                <td class="p-4 font-semibold">Kelas 1</td>
+                                <td class="p-4">14.00 - 15.15 WIB</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 dark:border-gray-700">
+                                <td class="p-4 font-semibold">Kelas 2</td>
+                                <td class="p-4">16.00 - 17.15 WIB</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-semibold">Kelas 3</td>
+                                <td class="p-4">14.00 - 15.15 WIB</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-4 reveal text-main">Hubungi Kami</h2>
+                <p class="text-center max-w-2xl mx-auto mb-12 reveal text-main">Kami siap menjawab pertanyaan Anda seputar pendaftaran, kurikulum, dan fasilitas. Silakan hubungi kami melalui kontak di bawah ini.</p>
+                <div class="max-w-lg mx-auto bg-card p-8 rounded-xl shadow-lg reveal">
+                    <div class="flex items-center mb-6">
+                        <div class="text-green-500 text-3xl mr-4"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg text-main">Telepon / WhatsApp</h4>
+                            <a href="tel:+6281234567890" class="text-main hover:text-primary">+62 812-3456-7890</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <div class="text-green-500 text-3xl mr-4"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg text-main">Email</h4>
+                            <a href="mailto:info@berkahilmu.sch.id" class="text-main hover:text-primary">info@berkahilmu.sch.id</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-green-500 text-3xl mr-4 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4 class="font-bold text-lg text-main">Alamat</h4>
+                            <p class="text-main">Jl. Pendidikan Islami No. 1, Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="year"></span> Madrasah Berkah Ilmu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Utility Buttons -->
+    <button id="back-to-top" class="hidden fixed bottom-5 right-5 bg-green-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-green-700 transition">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button id="dark-mode-toggle" class="fixed bottom-5 left-5 bg-gray-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-gray-600 transition">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainHeader = document.getElementById('main-header');
+            const backToTopButton = document.getElementById('back-to-top');
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const darkModeIcon = darkModeToggle.querySelector('i');
+            const body = document.body;
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // --- Set current year in footer ---
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Dark Mode ---
+            function setDarkMode(isDark) {
+                if (isDark) {
+                    body.classList.add('dark-mode');
+                    body.classList.remove('light-mode');
+                    darkModeIcon.classList.remove('fa-moon');
+                    darkModeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    darkModeIcon.classList.remove('fa-sun');
+                    darkModeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                setDarkMode(!body.classList.contains('dark-mode'));
+            });
+
+            // Check for saved theme preference
+            if (localStorage.getItem('theme') === 'dark' || 
+               (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
+                setDarkMode(true);
+            } else {
+                setDarkMode(false);
+            }
+
+            // --- Header Scroll Effect & Back-to-Top Button ---
+            window.addEventListener('scroll', () => {
+                // Header shadow
+                if (window.scrollY > 50) {
+                    mainHeader.classList.add('scrolled');
+                } else {
+                    mainHeader.classList.remove('scrolled');
+                }
+
+                // Back-to-top button visibility
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a, header nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.closest('#mobile-menu')) {
+                       mobileMenu.classList.add('hidden');
+                    }
+                    if (link.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            const headerOffset = document.getElementById('main-header').offsetHeight;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                        }
+                    }
+                });
+            });
+
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: unobserve after revealing to save resources
+                        // observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
